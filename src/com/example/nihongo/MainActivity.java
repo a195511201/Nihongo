@@ -1,34 +1,42 @@
 package com.example.nihongo;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.LinkedList;
+
+import com.example.nihongo.util.FileUtil;
+
 import android.app.Activity;
+import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
+	TextView mTv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		mTv = (TextView)findViewById(R.id.tv);
+		
+		AssetManager am = getResources().getAssets();
+		try {
+			String[] list = am.list("vocabularies");
+			StringBuilder textStr = new StringBuilder();
+			for (String string : list) {
+				InputStream is = am.open("vocabularies/"+string);
+				LinkedList<String> readFromFile = FileUtil.readFromFile(is);
+				for (String string2 : readFromFile) {
+					textStr.append(string2 + "\n\r");
+				}
+			}
+			mTv.setText(textStr);
+		} catch (IOException e) {
+			e.printStackTrace();
+			mTv.setText(e.getMessage());
 		}
-		return super.onOptionsItemSelected(item);
+		
 	}
+
 }
