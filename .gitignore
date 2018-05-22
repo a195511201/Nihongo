@@ -1,7 +1,5 @@
-/.settings
 /bin
 /gen
-/project.properties
 /obj/
 *.so
 /.externalToolBuilders
