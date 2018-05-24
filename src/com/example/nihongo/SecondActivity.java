@@ -6,12 +6,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.nihongo.util.FileUtil;
 
 public class SecondActivity extends Activity {
-	TextView mTV;
+	ListView mListView;
+	TextView mTitleTV;
+	TextView mBottomTV;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,42 +22,40 @@ public class SecondActivity extends Activity {
 		setContentView(R.layout.activity_second);
 		Intent intent = getIntent();
 		String param = intent.getStringExtra("param");
-		mTV = (TextView) findViewById(R.id.tv_second);
+		mListView = (ListView) findViewById(R.id.lv);
+		mTitleTV = (TextView) findViewById(R.id.tv_title);
+		mBottomTV = (TextView) findViewById(R.id.tv_end);
 
 		switch (param) {
-		case "choucha100":
+		case "choucha100"://抽查100词
 			LinkedList<WordBean> chouXuanWords = getChouXuanWords(100);
-			showWords(chouXuanWords, mTV,"随机100词");
+			showWords(chouXuanWords, mListView,"随机100词");
 			break;
-		case "lesson":
+		case "lesson"://选定某一课
 			int lessonNum = intent.getIntExtra("lessonNum", 1);
 			LinkedList<WordBean> vocabulories = FileUtil.getVocabulories(this,
 					lessonNum);
-			showWordsWithNum(vocabulories, mTV,"lesson"+lessonNum);
+			showWords(vocabulories, mListView,"lesson"+lessonNum);
 		}
 	}
 
-	private void showWords(LinkedList<WordBean> words, TextView tv, String title) {
-		StringBuilder sBuilder = new StringBuilder();
-		sBuilder.append("========"+title+"========" + "\n\n");
-		for (int i = 0; i < words.size(); i++) {
-			WordBean bean = words.get(i);
-			sBuilder.append(bean.jiaming + "\n");
-		}
-		sBuilder.append("\n========fin"+words.size()+"========");
-		mTV.setText(sBuilder.toString());
+	private void showWords(LinkedList<WordBean> words, ListView listView, String title) {
+		mTitleTV.setText("========"+title+"========" + "\n\n");
+		mBottomTV.setText("\n========fin"+words.size()+"========");
+		MyListViewAdapter adapter = new MyListViewAdapter(SecondActivity.this, words);
+		listView.setAdapter(adapter);
 	}
 	
-	private void showWordsWithNum(LinkedList<WordBean> words, TextView tv, String title) {
-		StringBuilder sBuilder = new StringBuilder();
-		sBuilder.append("========"+title+"========" + "\n\n");
-		for (int i = 0; i < words.size(); i++) {
-			WordBean bean = words.get(i);
-			sBuilder.append((i+1)+"."+bean.jiaming + "\n");
-		}
-		sBuilder.append("\n========fin"+words.size()+"========");
-		mTV.setText(sBuilder.toString());
-	}
+//	private void showWordsWithNum(LinkedList<WordBean> words, TextView tv, String title) {
+//		StringBuilder sBuilder = new StringBuilder();
+//		sBuilder.append("========"+title+"========" + "\n\n");
+//		for (int i = 0; i < words.size(); i++) {
+//			WordBean bean = words.get(i);
+//			sBuilder.append((i+1)+"."+bean.jiaming + "\n");
+//		}
+//		sBuilder.append("\n========fin"+words.size()+"========");
+//		mTV.setText(sBuilder.toString());
+//	}
 	
 	private static String getThreeNum(int num){
 		String ret = "";

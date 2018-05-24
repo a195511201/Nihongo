@@ -14,15 +14,16 @@ public class WordBean {
 			throw new RuntimeException("wordLines is wrong");
 		}
 		this.lessonNum = lessonNum;
+		num = Integer.parseInt(wordLines.get(0).substring(0,3));
 		if(wordLines.size() == 3){
 			jiaming = wordLines.get(0).substring(4);
 			hanzi = wordLines.get(1);
 			fanyi = wordLines.get(2);
 		}else if(wordLines.size() == 2){
-			//TODO 解决2行的情况
+			jiaming = wordLines.get(0).substring(4);
+			fanyi = wordLines.get(1);
 		}else if(wordLines.size() == 1){
 			jiaming = wordLines.get(0).substring(4);
-			num = Integer.parseInt(wordLines.get(0).substring(0,3));
 		}
 	}
 }

@@ -38,27 +38,27 @@ public class MainActivity extends Activity {
         }
         mPickerView.setDataList(dataList);
 
-		int totalLines = 0;
-		String zonghangshu = "";
-		for (int i = 1; i <= 32; i++) {
-			LinkedList<String> lineStrsofLesson = FileUtil.getLineStrsofLesson(
-					this, i);
-			int lines = lineStrsofLesson.size() - 1;
-			for (String string : lineStrsofLesson) {
-				if (string.contains("fin")) {
-					String numStr = string.substring(3);
-					int finNum = Integer.valueOf(numStr);
-					if (finNum != lines) {
-						throw new RuntimeException("行数不对");
-					} else {
-						zonghangshu += "lesson" + i + "行数:" + finNum + ",";
-					}
-				}
-			}
-			totalLines += lines;
-		}
-		Log.d("aaa", "总行数：" + totalLines);
-		Log.d("aaa", zonghangshu);
+//		int totalLines = 0;
+//		String zonghangshu = "";
+//		for (int i = 1; i <= 32; i++) {
+//			LinkedList<String> lineStrsofLesson = FileUtil.getLineStrsofLesson(
+//					this, i);
+//			int lines = lineStrsofLesson.size() - 1;
+//			for (String string : lineStrsofLesson) {
+//				if (string.contains("fin")) {
+//					String numStr = string.substring(3);
+//					int finNum = Integer.valueOf(numStr);
+//					if (finNum != lines) {
+//						throw new RuntimeException("行数不对");
+//					} else {
+//						zonghangshu += "lesson" + i + "行数:" + finNum + ",";
+//					}
+//				}
+//			}
+//			totalLines += lines;
+//		}
+//		Log.d("aaa", "总行数：" + totalLines);
+//		Log.d("aaa", zonghangshu);
 
 
 	}
