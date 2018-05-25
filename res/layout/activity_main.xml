@@ -6,37 +6,54 @@
     android:orientation="vertical"
     tools:context="com.example.nihongo.MainActivity" >
 
-    <Button 
+    <Button
         android:id="@+id/btn_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
         android:text="搜索"
-        />
-    
-    <Button
-        android:id="@+id/btn_choucha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="onCick"
-        android:text="抽查100个" />
+        android:textSize="25dp" />
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal" >
 
         <Button
-            android:layout_gravity="center_vertical"
-            android:id="@+id/btn_select"
+            android:id="@+id/btn_choucha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:onClick="onCick"
-            android:text="选择一课" />
+            android:text="抽查100个"
+            android:textSize="25dp" />
+        
+        <Button
+            android:id="@+id/btn_choucha_lishi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onCick"
+            android:visibility="gone"
+            android:text="抽查历史"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:onClick="onCick"
+            android:text="选择一课"
+            android:textSize="25dp" />
 
         <com.example.nihongo.EasyPickerView
             android:id="@+id/pickerView"
@@ -52,5 +69,15 @@
             custom:epvTextPadding="10dp"
             custom:epvTextSize="30sp" />
     </LinearLayout>
+    
+    <Button
+            android:id="@+id/btn_shengcibiao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onCick"
+            android:visibility="gone"
+            android:text="生词表"
+            android:textSize="25dp" />
 
 </LinearLayout>
