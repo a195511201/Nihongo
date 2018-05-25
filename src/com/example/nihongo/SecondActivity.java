@@ -1,11 +1,18 @@
 package com.example.nihongo;
 
+import java.io.File;
 import java.util.LinkedList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -46,16 +53,7 @@ public class SecondActivity extends Activity {
 		listView.setAdapter(adapter);
 	}
 	
-//	private void showWordsWithNum(LinkedList<WordBean> words, TextView tv, String title) {
-//		StringBuilder sBuilder = new StringBuilder();
-//		sBuilder.append("========"+title+"========" + "\n\n");
-//		for (int i = 0; i < words.size(); i++) {
-//			WordBean bean = words.get(i);
-//			sBuilder.append((i+1)+"."+bean.jiaming + "\n");
-//		}
-//		sBuilder.append("\n========fin"+words.size()+"========");
-//		mTV.setText(sBuilder.toString());
-//	}
+	
 	
 	private static String getThreeNum(int num){
 		String ret = "";
