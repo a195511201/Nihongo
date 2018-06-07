@@ -29,15 +29,6 @@
             android:text="抽查100个"
             android:textSize="25dp" />
         
-        <Button
-            android:id="@+id/btn_choucha_lishi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="onCick"
-            android:visibility="gone"
-            android:text="抽查历史"
-            android:textSize="25dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,13 +62,12 @@
     </LinearLayout>
     
     <Button
-            android:id="@+id/btn_shengcibiao"
+            android:id="@+id/btn_jiyibeici"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:onClick="onCick"
-            android:visibility="gone"
-            android:text="生词表"
+            android:text="记忆背词"
             android:textSize="25dp" />
 
 </LinearLayout>
